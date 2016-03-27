@@ -22,6 +22,7 @@ head(StepsByDay)
 ```{r, echo=TRUE}
 qplot(StepsByDay, xlab="Total number of steps per day", ylab="frequency (binwidth=500)", binwidth=500)
 ```
+
 #### 2.3 Calculate and report the mean and median of the total number of steps taken per day
 ``` {r, echo=TRUE}
 MeanStepByDay<- mean(StepsByDay)
@@ -36,6 +37,7 @@ StepsByInterval <- aggregate (steps~interval, Data, mean, na.rm=TRUE)
 g <- ggplot (StepsByInterval, aes(interval, steps))
 g+geom_line() + labs (x= "5 minutes interval", y="Average number of steps")
 ```
+
 #### 3.2 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 ```{r, echo=TRUE}
 StepsByInterval[which.max(StepsByInterval$steps),]
@@ -65,6 +67,7 @@ StepsByDayImputed <- tapply(DataImputed$steps, DataImputed$date, sum)
 qplot(StepsByDayImputed, xlab="Total number of steps per day (Imputed", 
       ylab="frequency (binwidth=500) (Imputed)", binwidth=500)
 ```
+
 Do these values differ from the estimates from the first part of the assignment? Yes, they differ. 
 ```{r, echo=TRUE}
 MeanStepByDayImputed<- mean(StepsByDayImputed)
