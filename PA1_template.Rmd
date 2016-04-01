@@ -7,7 +7,7 @@ Data <- read.csv("activity.csv", sep =",")
 ## 2. What is mean total number of steps taken per day?
 
 #### 2.1 Calculate the total number of steps taken per day
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 library(ggplot2)
 StepsByDay <- tapply(Data$steps, Data$date, sum, na.rm=TRUE)
 head(StepsByDay)
@@ -95,6 +95,6 @@ g + geom_line()+ facet_grid(Week ~.) + labs (x<- "5 minutes iterval",
 ```
 ```{r, echo=TRUE}
 output: 
-    html_document:
+        html_document:
         keep_md: true
 ```
