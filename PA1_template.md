@@ -1,10 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
-## 1. Loading and preprocessing the data
+## 1.Loading and preprocessing the data
 
 ```{r, echo=TRUE}
 Data <- read.csv("activity.csv", sep =",")
@@ -29,6 +23,7 @@ MeanStepByDay<- mean(StepsByDay)
 MedianStepByDay<-median(StepsByDay)
 ```
 The mean is `r MeanStepByDay` and the median is `r MedianStepByDay`.
+
 ##3.What is the average daily activity pattern?
 
 #### 3.1 Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
@@ -68,20 +63,23 @@ qplot(StepsByDayImputed, xlab="Total number of steps per day (Imputed",
       ylab="frequency (binwidth=500) (Imputed)", binwidth=500)
 ```
 
-Do these values differ from the estimates from the first part of the assignment? Yes, they differ. 
+Do these values differ from the estimates from the first part of the assignment? 
 ```{r, echo=TRUE}
-MeanStepByDayImputed<- mean(StepsByDayImputed)
+MeanStepByDayImputed <- mean(StepsByDayImputed)
 MedianStepByDayImputed <- median(StepsByDayImputed)
 DiffMean <- MeanStepByDayImputed - MeanStepByDay
 DiffMedian <- MedianStepByDayImputed - MedianStepByDay
 DiffMean
 DiffMedian
 ```
-What is the impact of imputing missing data on the estimates of the total daily number of steps? The total number of steps is higer when the missing data are filled in.
+Yes, they differ. 
+What is the impact of imputing missing data on the estimates of the total daily number of steps?
 ```{r, echo=TRUE}
 DiffSteps <- sum(DataImputed$steps) - sum(Data$steps, na.rm=TRUE)
 DiffSteps
 ```
+The total number of steps is higer when the missing data are filled in.
+
 ##5.Are there differences in activity patterns between weekdays and weekends?
 
 #### 5.1 Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
